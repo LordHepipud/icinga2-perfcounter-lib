@@ -2,6 +2,7 @@ param(
     [string]$Counter                           = '',
     [string]$ListCounter                       = '',
     [array]$CounterArray                       = @(),
+    [boolean]$ListCategories                   = $FALSE,
     [boolean]$SkipWait                         = $FALSE,
     # These arguments apply to CreateStructuredPerformanceCounterTable
     # This is the category name we want to create a structured output
@@ -461,6 +462,32 @@ function CreateStructuredPerformanceCounterTable
 }
 
 #
+# This function will load all available Categories of Performance Counters
+# from the registry and outputs them. This will ensure we can fetch the real
+# english names instead of the localiced ones
+#
+function ListCounterCategories()
+{
+    $RegistryData    = Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\009' `
+                                        -Name 'counter' | Select-Object -ExpandProperty Counter;
+    [array]$Counters = @();
+
+    # Now lets loop our registry data and fetch only for counter categories
+    # Ignore everything else and drop the information
+    foreach ($counter in $RegistryData) {
+        # First filter out the ID's of the performance counter
+        if (-Not ($counter -match "^[\d\.]+$") -And [string]::IsNullOrEmpty($counter) -eq $FALSE) {
+            # Now check if the value we got is a counter category
+            if ([System.Diagnostics.PerformanceCounterCategory]::Exists($counter) -eq $TRUE) {
+                $Counters += $counter;
+            }
+        }
+    }
+
+    return $Counters;
+}
+
+#
 # Provide the name of a category to fetch all available counters and
 # if there are any instances assigned to it
 #
@@ -516,6 +543,10 @@ if ([string]::IsNullOrEmpty($CreateStructuredOutputForCategory) -eq $FALSE) {
                 -PerformanceCounterHash $StructuredCounterInput `
                 -InstanceNameCleanupArray $StructuredCounterInstanceCleanup
             )
+}
+
+if ($ListCategories -eq $TRUE) {
+    return ListCounterCategories;
 }
 
 if ([string]::IsNullOrEmpty($ListCounter) -eq $FALSE) {

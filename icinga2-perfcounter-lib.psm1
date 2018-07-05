@@ -21,6 +21,8 @@
         [string]$ListCounter                       = '',
         # Provide an array of counters we check in a bulk '\Processor(*)\% Processor Time', '\Processor(*)\% c1 time'"
         [array]$CounterArray                       = @(),
+        # List all available Performance Counter Categories on a system
+        [switch]$ListCategories                    = $FALSE,
         # By default counters will wait globally for 500 milliseconds. With this we can skip it. Use with caution!
         [switch]$SkipWait                          = $FALSE,
         # These arguments apply to CreateStructuredPerformanceCounterTable
@@ -46,6 +48,7 @@
             -Counter $Counter `
             -ListCounter $ListCounter `
             -CounterArray $CounterArray `
+            -ListCategories $ListCategories `
             -SkipWait $SkipWait `
             -CreateStructuredOutputForCategory $CreateStructuredOutputForCategory `
             -StructuredCounterInput $StructuredCounterInput `
