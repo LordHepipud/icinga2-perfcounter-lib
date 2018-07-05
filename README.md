@@ -24,4 +24,4 @@ No matter whether these are feature requests, issues, translations, documentatio
 
 * Please check whether a related issue alredy exists on our [Issue Tracker](https://github.com/LordHepipud/icinga2-perfcounter-lib/issues)
 * Send a [Pull Request](https://github.com/LordHepipud/icinga2-perfcounter-lib/pulls)
-* The master branche shall never be corrupt!
+* The master branch shall never be corrupt!
