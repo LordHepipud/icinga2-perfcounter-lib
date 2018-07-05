@@ -3,6 +3,12 @@ Examples for using the module
 
 Below you will find some examples to use the module to fetch performance counters.
 
+### Fetch available counter categories on the system
+
+```powershell
+    Get-Icinga2Counter -ListCategories;
+```
+
 ### Fetch a list of available Performance Counters for a category
 
 #### Example 1
