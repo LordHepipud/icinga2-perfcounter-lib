@@ -6,6 +6,6 @@ work with Performance Counters on Windows Systems. This module can be used toget
 plugins designed for Icinga 2, to easily and without much complexity fetch Performance Counter data.
 
 In addition this module allows an easy usage from the PowerShell itself, to quickly get an overview
-of the current system beeing worked or a remote computer the module is installed on.
+of the current system being worked or a remote computer the module is installed on.
 
 If you are ready to get started, take a look on the [installation guide](02-Installation.md).

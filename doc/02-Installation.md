@@ -22,7 +22,7 @@ of the module by writing
 ```    
 
 You might require to scroll a bit to locate your module directory with the installed Icinga 2 module. 
-Once it's there, the installation was successfull
+Once it's there, the installation was successful.
 
 If you are done, you might want to take a look on the [example page](30-Examples.md).
 

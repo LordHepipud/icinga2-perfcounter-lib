@@ -28,7 +28,7 @@ this is the one which should be used.
 
 #### Example 1
 
-Fecth multiple counters at once and access a multi instance counter
+Fetch multiple counters at once and access a multi instance counter
 
 ```powershell
     $counter = Get-Icinga2Counter -CounterArray @(
@@ -41,7 +41,7 @@ Fecth multiple counters at once and access a multi instance counter
 
 #### Example 2
 
-Fetch a single instance counter and print it's value
+Fetch a single instance counter and print its value
 
 ```powershell
     $counter = Get-Icinga2Counter -CounterArray @('\Processor(_Total)\% processor time');
