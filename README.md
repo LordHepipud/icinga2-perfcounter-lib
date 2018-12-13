@@ -5,6 +5,11 @@ Welcome to the Icinga 2 Performance Counter Library - the easy way to fetch Perf
 Counters on Windows Systems.
 If you are new to this module, you might want to read the [installation guide](doc/02-Installation.md) first.
 
+Requirements
+------------
+Powershell Version >= 3.0 is required
+
+
 Documentation
 -------------
 
